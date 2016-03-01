@@ -51,17 +51,25 @@ module Smsme
       if recipients.is_a? Array
         puts @display.get_message
         message = user_input[0..100] + "SENDER: #{sender_number}"
-        recipients.each do |number|
-          next unless number =~ valid_phone_number
-          messenger(number, message)
-        end
+        multi_recipients(recipients, message)
       elsif recipients =~ valid_phone_number
-        puts @display.get_message
-        message = user_input[0..139] + "SENDER: #{sender_number}"
-        messenger(recipients, message)
+        single_recipient(recipients)
       else
         interact
       end
+    end
+
+    def multi_recipients(recipients, message)
+      recipients.each do |number|
+        next unless number =~ valid_phone_number
+        messenger(number, message)
+      end
+    end
+
+    def single_recipient(recipients)
+      puts @display.get_message
+      message = user_input[0..100] + "SENDER: #{sender_number}"
+      messenger(recipients, message)
     end
 
     def messenger(number, message)

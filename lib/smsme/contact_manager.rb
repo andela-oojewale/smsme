@@ -8,7 +8,7 @@ module Smsme
     def add_contact
       puts @display.add_to_contact
       contact_info = user_input
-      add_single_contact(contact) if contact_info =~ single_contact
+      add_single_contact(contact_info) if contact_info =~ single_contact
       add_multi_contact(contact_info) if contact_info =~ many_contact
       unless (contact_info =~ single_contact) || (contact_info =~ many_contact)
         puts @display.error_message
@@ -19,7 +19,7 @@ module Smsme
     def search_contact(name)
       contact = Database.search(name)
       if contact.length > 1
-        similar_matches(contact)
+        similar_matches(contact, name)
       elsif contact.length == 1
         puts @display.prettify "| Name: #{contact[0]["name"]}  | Phone Number: #{contact[0]["phoneNumber"]}"
         puts @display.prettify "Send this user an sms?"
@@ -32,14 +32,14 @@ module Smsme
       end
     end
 
-    def similar_matches(contact)
+    def similar_matches(contact, keyword)
       names = contact.map{ |record| record["name"].capitalize }
-      puts @display.prettify "Which '#{name}'? #{names}"
+      puts @display.prettify "Which '#{keyword}'? #{names}"
       search_contact(user_input)
     end
 
     def add_single_contact(contact)
-      name, number = contact_info.split[2], contact_info.split[4]
+      name, number = contact.split[2], contact.split[4]
       Database.save_contact(name, number)
       puts @display.prettify "Contact added successfully"
     end

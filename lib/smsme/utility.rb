@@ -1,7 +1,7 @@
 module Smsme
   module Utility
-
     @display = Smsme::Display.new
+
     def continue?(info = "Continue? (Y/N)")
       puts @display.prettify info
       user_input =~ /y|yes/
@@ -14,6 +14,5 @@ module Smsme
     def valid_phone_number
       /[\d]{8,15}/
     end
-
   end
 end

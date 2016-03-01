@@ -1,41 +1,54 @@
 # Smsme
 
-Add keys.rb and include your twillo keys in te file.
+Hi,
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/smsme`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a simple short message assistant. It should help you send short messages to people and also manage your contact.
+It is basically a simple gem that mind be handy in any situation.
 
-TODO: Delete this and the text above, and describe your gem
+Enjoy!
 
 ## Installation
 
-Add this line to your application's Gemfile:
+I did not publish this gem on rubygems because of certain resources that you might need to use it at runtime.
+This includes:
 
-```ruby
-gem 'smsme'
-```
+* A file that you should create and name "lib/smsme/keys.rb" where you'll have all the constants needed to setup.
+  * ACC_SID: Account SID. Something like:'ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  * AUTH_TOKEN: Authentication token. Something like: 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
+  * SENDER_NUMBER: Senders registered number. Something like: "+1*********3"
 
-And then execute:
+All of the above "keys" file can be gotten from [Twillo](https://www.twilio.com/sms)
 
-    $ bundle
+To use this gem:
 
-Or install it yourself as:
+Clone this repo using:
 
-    $ gem install smsme
+`git clone git@github.com:andela-oojewale/smsme.git`
+
+Add the keys file mentioned above.
 
 ## Usage
 
-TODO: Write usage instructions here
+Run:
 
-## Development
+ `bundle exec smsme`
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+The gem is quite interactive. Follow the prompts and you will find it easy to use.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Features
 
-## Contributing
+* Contact Management with sqlite3 database.
+* Addition of contacts to database with simple commands.
+* Ability to search for saved contacts.
+* Ability to send sms to saved contacts.
+* Ability to send sms to multiple recipients at once.
+* Ability to send sms to recipients who are not saved on your contacts list.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/smsme. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+
+
+## NOTICE
+Not all telephone networks are verified and thus supported. You can check [here](https://www.twilio.com/lookup) for a lookup.
 
 ## License
 
