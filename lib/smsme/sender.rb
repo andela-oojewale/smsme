@@ -28,6 +28,9 @@ module Smsme
       when 3
         puts @display.prettify "Enter recipients numbers separated by commas"
         send_message(@manager.recipients)
+      when 4
+        @manager.all_contacts
+        interact
       when 0
         puts @display.prettify "GOODBYE !!!"
         exit

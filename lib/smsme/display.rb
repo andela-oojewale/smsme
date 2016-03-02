@@ -19,6 +19,7 @@ module Smsme
                 *       Press 2 to search for a contact         *
                 *    Press 3 to send sms to a number that is    *
                 *       not on your contact list                *
+                *          Press 4 to see all contacts          *
                 *               Press 0 to quit                 *
                 *************************************************
       EOS

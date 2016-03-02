@@ -32,6 +32,13 @@ module Smsme
       end
     end
 
+    def all_contacts
+      contacts = Database.all
+      contacts.each do |contact|
+        puts @display.prettify "| Name: #{contact["name"]}  | Phone Number: #{contact["phoneNumber"]}"
+      end unless contacts.empty?
+    end
+
     def similar_matches(contact, keyword)
       names = contact.map{ |record| record["name"].capitalize }
       puts @display.prettify "Which '#{keyword}'? #{names}"

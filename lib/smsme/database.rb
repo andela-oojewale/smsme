@@ -24,6 +24,13 @@ module Smsme
         rows.each{|row| contacts << row.reject!{ |k| !k.is_a? String } }
         contacts
       end
+
+      def all
+        rows = db_conn.execute "SELECT name, phoneNumber FROM contacts;"
+        contacts = []
+        rows.each{|row| contacts << row.reject!{ |k| !k.is_a? String } }
+        contacts
+      end
     end
   end
 end

@@ -43,6 +43,7 @@ The gem is quite interactive. Follow the prompts and you will find it easy to us
 * Ability to send sms to saved contacts.
 * Ability to send sms to multiple recipients at once.
 * Ability to send sms to recipients who are not saved on your contacts list.
+* Ability to show all contacts in your address book.
 
 
 
