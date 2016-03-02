@@ -20,13 +20,15 @@ module Smsme
       def search(name)
         rows = db_conn.execute "SELECT name, phoneNumber FROM contacts WHERE name = '#{name}';"
         rows = db_conn.execute "SELECT name, phoneNumber FROM contacts WHERE name LIKE '%#{name}%';" if rows.empty?
-        contacts = []
-        rows.each{|row| contacts << row.reject!{ |k| !k.is_a? String } }
-        contacts
+        pruner(rows)
       end
 
       def all
         rows = db_conn.execute "SELECT name, phoneNumber FROM contacts;"
+        pruner(rows)
+      end
+
+      def pruner(rows)
         contacts = []
         rows.each{|row| contacts << row.reject!{ |k| !k.is_a? String } }
         contacts
